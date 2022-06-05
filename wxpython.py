@@ -28,7 +28,7 @@ class PetFrame(wx.Frame):
 
         # Convert it to a wx.Bitmap, which will be used in SetWindowShape, and
         # in OnPaint below.
-        self.bmp = wx.BitmapFromImage(img)
+        self.bmp = wx.Bitmap(img)
 
         w, h = self.bmp.GetWidth(), self.bmp.GetHeight()
         self.SetClientSize((w, h))
