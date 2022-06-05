@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import wx
+from wx.adv import Animation
 
 
 class PetFrame(wx.Frame):
@@ -21,8 +22,13 @@ class PetFrame(wx.Frame):
         self.Bind(wx.EVT_RIGHT_UP, self.OnExit)
         self.Bind(wx.EVT_PAINT, self.OnPaint)
 
+        self.animation = Animation()
+        self.animation.LoadFile("./images/idle.gif")
+
+        self.frame = 0
+
         # Load the image and ensure it has a Mask, (rather than an alpha channel)
-        img = wx.Image("./images/idle.gif", wx.BITMAP_TYPE_ANY)
+        img = self.animation.GetFrame(self.frame)
         if img.HasAlpha():
             img.ConvertAlphaToMask()
 
